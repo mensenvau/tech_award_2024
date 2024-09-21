@@ -2,32 +2,25 @@ const Joi = require('joi');
 const Person = require('./Person');
 
 const studentValidationSchema = Person.concat(Address).keys({
-  lead_id: Joi.number()
-    .integer()
-    .min(1)
+    skills: Joi.string()
+    .trim()
     .optional()
     .allow(null)
     .messages({
-      'number.base': 'Lead ID must be a number',
-      'number.integer': 'Lead ID must be an integer',
-      'number.min': 'Lead ID must be greater than or equal to 1'
+      'string.base': 'Surname must be a string',
+      'string.min': 'Surname must be at least 3 characters long',
+      'string.max': 'Surname must be less than or equal to 255 characters',
     }),
 
-  group_id: Joi.number()
-    .integer()
-    .min(1)
-    .required()
+    tax_certification_file: Joi.string()
+    .trim()
+    .optional()
+    .allow(null)
     .messages({
-      'number.base': 'Group ID must be a number',
-      'number.integer': 'Group ID must be an integer',
-      'number.min': 'Group ID must be greater than or equal to 1',
-      'any.required': 'Group ID is required',
+      'string.base': 'Surname must be a string',
+      'string.min': 'Surname must be at least 3 characters long',
+      'string.max': 'Surname must be less than or equal to 255 characters',
     }),
-
-  ielts: IELTSInfo.optional().allow(null),
-
-  guardian: Guardian.optional().allow(null)
-
 });
 
 module.exports = studentValidationSchema;

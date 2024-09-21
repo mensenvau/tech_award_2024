@@ -22,14 +22,7 @@ let loadSupergroupInfo = tryCatch("loadSupergroupInfo", async (client, chat) => 
     let [info, group] = await Promise.all([client.invoke({ _: "getSupergroupFullInfo", supergroup_id: chat.type.supergroup_id }), client.invoke({ _: "getSupergroup", supergroup_id: chat.type.supergroup_id })]);
     await letGetFile(client, chat);
 
-    await execute("insert into channels (chat_id, super_group_id, username, title, description, member_count) values (?, ?, ?, ?, ?, ?)", [
-        chat.id,
-        chat.type.supergroup_id,
-        chat.title,
-        group.usernames.editable_username,
-        info.description,
-        info.member_count,
-    ]);
+    await execute("insert into channels (chat_id, group_id, username, title, description, member_count) values (?, ?, ?, ?, ?, ?)", [chat.id, chat.type.supergroup_id, chat.title, group.usernames.editable_username, info.description, info.member_count]);
 });
 
 letGetFile = tryCatch("loadSupeletGetFilergroupInfo", async (client, chat) => {

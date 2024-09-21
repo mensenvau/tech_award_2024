@@ -77,15 +77,6 @@ const personSchema = Joi.object({
       'string.max': 'Surname must be less than or equal to 255 characters',
     }),
 
-    skills: Joi.string()
-    .trim()
-    .optional()
-    .allow(null)
-    .messages({
-      'string.base': 'Surname must be a string',
-      'string.min': 'Surname must be at least 3 characters long',
-      'string.max': 'Surname must be less than or equal to 255 characters',
-    }),
 });
 
 module.exports = personSchema;
