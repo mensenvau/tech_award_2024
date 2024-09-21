@@ -42,7 +42,7 @@ create table jobs (
     job_salary varchar(255), -- Equivalent to MongoDB String
     job_descriptions text, -- Equivalent to MongoDB String for longer text
     input_language varchar(50), -- Equivalent to MongoDB String
-    jobs_date date,  -- MongoDB timestamps: createdAt
+    job_date date,  -- MongoDB timestamps: createdAt
     created_at datetime default current_timestamp, -- today
     updated_at datetime default current_timestamp on update current_timestamp -- MongoDB timestamps: updatedAt
 );
@@ -114,11 +114,14 @@ create view vw_jobs as (
     inner join job_locations jl on jobs.id = jl.job_id
 );
 
+drop view if exists vw_by_country;
+create view vw_by_country as
+select city, count(*) as count from job_locations
+group by city
+order by count desc
+limit 10;
 
-select * from vw_jobs where is_job_vacancy = true and (city like '%uz%' or country like '%uz%') limit 10, 20
-
-
-# YANGI HAYOT ...
+# YANGI ERA ...
 drop table if exists users;
 create table users (
     id int unsigned auto_increment primary key,
@@ -138,11 +141,3 @@ create table sms_code (
      status int default 0,
      foreign key (id) references users(id) on delete cascade
 );
-
-
-drop view if exists vw_by_country;
-create view vw_by_country as
-select city, count(*) as count from job_locations
-group by city
-order by count desc
-limit 10;
