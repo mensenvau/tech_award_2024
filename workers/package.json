@@ -1,0 +1,22 @@
+{
+    "name": "job.menda.page",
+    "version": "1.0.0",
+    "description": "job aggregator",
+    "main": "app.js",
+    "scripts": {
+        "menu": "node menu.js",
+        "start": "nodemon app.js"
+    },
+    "keywords": [],
+    "author": "",
+    "license": "ISC",
+    "dependencies": {
+        "dotenv": "^16.4.5",
+        "node": "^22.6.0",
+        "nodemon": "^3.1.4",
+        "openai": "^4.56.0",
+        "prompts": "^2.4.2",
+        "tdl": "^8.0.1",
+        "uzdev": "^1.5.2"
+    }
+}
