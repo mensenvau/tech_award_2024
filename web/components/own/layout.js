@@ -13,7 +13,7 @@ export function MainLayout({ children }) {
                 </div>
 
                 <div className="sm:py-4 flex-grow bg-neutral-50 dark:bg-gray-900">
-                    <SubLayout className=""> {children} </SubLayout>
+                    <SubLayout > {children} </SubLayout>
                 </div>
             </div>
         </div>

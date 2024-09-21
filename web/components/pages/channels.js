@@ -1,11 +1,11 @@
 "use client";
 
-import { useFetch } from "@/library/request";
+import { useFetch } from "@/lib/request";
 import { useEffect, useState } from "react";
 import { Table, TableBody, TableCell, TableHead, TableHeader, TableRow } from "@/components/ui/table";
 import { Card, CardContent, CardHeader } from "@/components/ui/card";
-import { Charts } from "@/components/own/stat";
-import { Loading } from "../own/loading";
+import { ChartStat } from "@/components/own/stat";
+import { Loading } from "@/components/own/loading";
 import Image from "next/image";
 
 export function PageChannels() {
@@ -63,7 +63,7 @@ export function PageChannels() {
                 </Card>
             </div>
             <div className="col-span-8 md:col-span-2 py-4">
-                <Charts />
+                <ChartStat />
             </div>
         </div>
     );

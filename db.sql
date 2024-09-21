@@ -118,8 +118,6 @@ create view vw_jobs as (
 select * from vw_jobs where is_job_vacancy = true and (city like '%uz%' or country like '%uz%') limit 10, 20
 
 
-
-
 # YANGI HAYOT ...
 drop table if exists users;
 create table users (
@@ -140,3 +138,11 @@ create table sms_code (
      status int default 0,
      foreign key (id) references users(id) on delete cascade
 );
+
+
+drop view if exists vw_by_country;
+create view vw_by_country as
+select city, count(*) as count from job_locations
+group by city
+order by count desc
+limit 10;

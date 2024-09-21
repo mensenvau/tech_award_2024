@@ -2,7 +2,7 @@
 
 import { useEffect } from "react";
 import { useRouter, useSearchParams } from "next/navigation";
-import { useSearchStore } from "@/library/stores";
+import { useSearchStore } from "@/lib/stores";
 import { SubLayout } from "@/components/own/layout";
 import { Button } from "@/components/ui/button";
 import { Input } from "@/components/ui/input";

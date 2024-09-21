@@ -15,18 +15,18 @@ exports.authSignUp = fnCatch(async (req, res, next) => {
 
     let code = randomCode(5);
     let ins = await execute("insert into sms_code (phone_num, code) values (?, ?)", [phone_number, code]);
-    
+
     let data = await execute("select * from users where phone_num = ?", [phone_number]);
-    if(!data.length){
+    if (!data.length) {
         let res = await execute("insert into users(phone_num, first_name, last_name, birth_date) values (?,?,?,?)", [phone_number, first_name, last_name, birth_date])
         console.log(res);
-    }    
+    }
 
     smsSender(phone_number, `Jobgram tizimidan ro'yxatdan o'tish uchun kod: ${code}`);
-    
+
     return res.json({
         message: "Ok",
-        token: enCode({ id: ins.insertId, user_id:data[0].id || res.insertId, code, type: "sms" }),
+        token: enCode({ id: ins.insertId, user_id: data[0].id || res.insertId, code, type: "sms" }),
     });
 });
 
@@ -48,28 +48,28 @@ exports.authSignIn = fnCatch(async (req, res, next) => {
 });
 
 exports.verifyPhoneCode = fnCatch(async (req, res, next) => {
-    let {code} = req.body;
+    let { code } = req.body;
     let token = req.headers['token']
-    
+
     let obj = deCode(token);
     console.log(obj);
 
 
-    if(obj?.code !== code)
+    if (obj?.code !== code)
         return res.json({
             message: "Please enter the valid code."
-        }) 
+        })
 
-    
-    if(!code || !token) return res.json({
-        message:"Please provide the code sent as sms or try to sign in again."
+
+    if (!code || !token) return res.json({
+        message: "Please provide the code sent as sms or try to sign in again."
     })
-    
+
     let userInfo = await execute("select * from users where id = ?", [obj.user_id]);
-    
+
     return res.json({
-        message:"Ok", userInfo: userInfo[0],
+        message: "Ok", userInfo: userInfo[0],
         token: enCode({ id: code, type: "auth" })
     })
-    
+
 });

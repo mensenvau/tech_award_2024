@@ -5,7 +5,7 @@ import {
   DotsHorizontalIcon,
 } from "@radix-ui/react-icons"
 
-import { cn } from "@/library/utils"
+import { cn } from "@/lib/utils"
 import { buttonVariants } from "@/components/ui/button";
 
 const Pagination = ({

@@ -39,7 +39,7 @@ export function JobCard({ job }) {
         <Link href={`/job/${job.id}?job_name=${job.job_name}&company_name=${job.company_name}`}>
             <Card className="my-4 mx-auto cursor-pointer hover:shadow-lg transition-shadow duration-300">
                 <CardHeader>
-                    <CardTitle>{job.job_name}
+                    <CardTitle className="text-lg">{job.job_name}
                         {/* {isNew && (
                             <Badge variant="outline" className="inline-flex items-center rounded-md bg-green-50 px-2 py-1 text-xs font-medium text-green-700 ring-1 ring-inset ring-green-600/20">
                                 New
@@ -61,21 +61,20 @@ export function JobCard({ job }) {
     );
 }
 
-export function JobFullCard({ job }) {
-    const now = moment().utc();
-    const post = moment(job.createdAt).utc();
+export function JobFullCard({ data }) {
+    let { job, job_locations, contact_informations, job_responsibilities, requirement_skills, occupations, additional_comments } = data;
 
     return (
         <Card className="mx-auto cursor-pointer hover:shadow-lg transition-shadow duration-300">
             <CardHeader>
-                <CardTitle className="text-xl">{job.job_name}</CardTitle>
+                <CardTitle className="text-2xl">{job.job_name}</CardTitle>
                 <CardDescription>{job.company_name}</CardDescription>
             </CardHeader>
             <CardContent>
                 <div className="w-full py-2">
                     <p className="font-semibold	text-lg">Job details</p>
                     <div className="sm:flex flex-wrap gap-2">
-                        <JobDetail icon={CountryIcon} iconProps={{ code: job.country_code }} text={job.city} />
+                        <JobDetail icon={CountryIcon} iconProps={{ code: job_locations.country_code }} text={`${job_locations.city}, ${job_locations.full_address}`} />
                         <JobDetail icon={Clock} text={job.job_type} />
                         <JobDetail icon={Calendar} text={moment(job.createdAt).fromNow()} />
                         <JobDetail icon={DollarSign} text={job.job_salary} />
@@ -90,35 +89,35 @@ export function JobFullCard({ job }) {
                 <div className="w-full py-2">
                     <p className="font-semibold	text-lg">Job responsibilities</p>
                     <ul className="list-disc list-inside">
-                        {job.job_responsibilities.map((item, index) => (<li key={index}>{item}</li>))}
+                        {job_responsibilities.map((item, index) => (<li key={index}>{item.responsibility}</li>))}
                     </ul>
                 </div>
 
                 <div className="w-full py-2">
                     <p className="font-semibold	text-lg"> Job requirement skills</p>
                     <ul className="list-disc list-inside">
-                        {job.requirement_skills.map((item, index) => (<li key={index}>{item}</li>))}
+                        {requirement_skills.map((item, index) => (<li key={index}>{item.skill}</li>))}
                     </ul>
                 </div>
 
                 <div className="w-full py-2">
                     <p className="font-semibold	text-lg">Job occupations</p>
                     <ul className="list-disc list-inside">
-                        {job.occupations.map((item, index) => (<li key={index}>{item}</li>))}
+                        {occupations.map((item, index) => (<li key={index}>{item.occupation}</li>))}
                     </ul>
                 </div>
 
                 <div className="w-full py-2">
                     <p className="font-semibold	text-lg">Job additional comments</p>
                     <ul className="list-disc list-inside">
-                        {job.additional_comments.map((item, index) => (<li key={index}>{item}</li>))}
+                        {additional_comments.map((item, index) => (<li key={index}>{item.comment}</li>))}
                     </ul>
                 </div>
 
                 <div className="w-full py-2">
                     <p className="font-semibold	text-lg">Job contact informations</p>
                     <ul className="list-disc list-inside">
-                        {job.contact_informations.map((item, index) => (
+                        {contact_informations.map((item, index) => (
                             <li key={index}>
                                 <span className="font-semibold">{item.type}:</span> <JobContactLink type={item.type} value={item.value} />
                             </li>

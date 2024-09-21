@@ -1,8 +1,8 @@
 "use client";
 
 import { useEffect, useState } from "react";
-import { useFetch } from "@/library/request";
-import { useSearchStore } from "@/library/stores";
+import { useFetch } from "@/lib/request";
+import { useSearchStore } from "@/lib/stores";
 import { PaginationCompanent } from "@/components/own/pagination";
 import { ChartStat } from "@/components/own/stat";
 import { JobCard } from "@/components/own/cards";

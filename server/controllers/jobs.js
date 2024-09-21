@@ -36,9 +36,9 @@ exports.getListChannels = fnCatch(async (req, res, next) => {
 
 exports.getJobById = fnCatch(async (req, res, next) => {
     let job_id = req.params.id;
-    let [job, locations, contact, responsibilities, requirement_skills, occupations, comments] = await Promise.all([
+    let [job, job_locations, contact_informations, job_responsibilities, requirement_skills, occupations, additional_comments] = await Promise.all([
         execute("select * from jobs where id = ?", [job_id], 1),
-        execute("select * from job_locations where job_id = ?", [job_id]),
+        execute("select * from job_locations where job_id = ?", [job_id], 1),
         execute("select * from contact_informations where job_id = ?", [job_id]),
         execute("select * from job_responsibilities where job_id = ?", [job_id]),
         execute("select * from requirement_skills where job_id = ?", [job_id]),
@@ -46,5 +46,10 @@ exports.getJobById = fnCatch(async (req, res, next) => {
         execute("select * from additional_comments where job_id = ?", [job_id]),
     ]);
 
-    res.json({ job, locations, contact, responsibilities, requirement_skills, occupations, comments });
+    res.json({ job, job_locations, contact_informations, job_responsibilities, requirement_skills, occupations, additional_comments });
+});
+
+exports.getByCountry = fnCatch(async (req, res, next) => {
+    let country = await execute("select * from vw_by_country");
+    return res.json({ country });
 });

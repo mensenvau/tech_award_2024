@@ -1,7 +1,7 @@
 "use client";
 
 import { useEffect } from "react";
-import { useSearchStore } from "@/library/stores";
+import { useSearchStore } from "@/lib/stores";
 import { useRouter, useSearchParams } from "next/navigation";
 import { Pagination, PaginationContent, PaginationEllipsis, PaginationItem, PaginationLink, PaginationNext, PaginationPrevious } from "@/components/ui/pagination";
 
