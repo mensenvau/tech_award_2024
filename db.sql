@@ -16,6 +16,19 @@ create table channels (
     updated_at datetime default current_timestamp on update current_timestamp -- MongoDB timestamps: updatedAt
 );
 
+drop table if exists messages;
+create table messages (
+    id int auto_increment primary key, -- Auto-incrementing primary key
+    tg_message_id varchar(255) not null unique, -- Equivalent to MongoDB String with unique constraint
+    chat_id varchar(255) not null, -- Equivalent to MongoDB String
+    super_group_id varchar(255) not null, -- Equivalent to MongoDB String
+    content text not null, -- Equivalent to MongoDB String (for longer text)
+    is_active boolean default false, -- Equivalent to MongoDB Boolean with default value
+    created_at timestamp default current_timestamp, -- MongoDB timestamps: createdAt
+    updated_at timestamp default current_timestamp on update current_timestamp, -- MongoDB timestamps: updatedAt
+    version int default 0 -- Equivalent to MongoDB versionKey
+);
+
 -- Ensure that both `chat_id` and `super_group_id` are unique together
 create unique index unique_chat_supergroup on channels (chat_id, super_group_id);
 
@@ -44,7 +57,7 @@ create table job_locations (
     city varchar(255), -- Equivalent to MongoDB String
     full_address text, -- Longer text for the full address
     is_remote_work boolean, -- Equivalent to MongoDB Boolean
-    foreign key (job_id) references jobs(id) -- Establishing foreign key relationship
+    foreign key (job_id) references jobs(id) on delete cascade -- Establishing foreign key relationship
 );
 
 drop table if exists contact_information;
@@ -53,7 +66,7 @@ create table contact_information (
     job_id int, -- Foreign key referencing jobs table
     type varchar(255) not null, -- Equivalent to MongoDB String
     value varchar(255) not null, -- Equivalent to MongoDB String
-    foreign key (job_id) references jobs(id) -- Establishing foreign key relationship
+    foreign key (job_id) references jobs(id) on delete cascade -- Establishing foreign key relationship
 );
 
 drop table if exists job_responsibilities;
@@ -61,7 +74,7 @@ create table job_responsibilities (
     id int auto_increment primary key, -- Auto-incrementing primary key
     job_id int, -- Foreign key referencing jobs table
     responsibility text, -- Equivalent to MongoDB String (for longer text)
-    foreign key (job_id) references jobs(id) -- Establishing foreign key relationship
+    foreign key (job_id) references jobs(id) on delete cascade -- Establishing foreign key relationship
 );
 
 drop table if exists requirement_skills;
@@ -69,7 +82,7 @@ create table requirement_skills (
     id int auto_increment primary key, -- Auto-incrementing primary key
     job_id int, -- Foreign key referencing jobs table
     skill varchar(255), -- Equivalent to MongoDB String
-    foreign key (job_id) references jobs(id) -- Establishing foreign key relationship
+    foreign key (job_id) references jobs(id) on delete cascade -- Establishing foreign key relationship
 );
 
 drop table if exists occupations;
@@ -77,7 +90,7 @@ create table occupations (
     id int auto_increment primary key, -- Auto-incrementing primary key
     job_id int, -- Foreign key referencing jobs table
     occupation varchar(255), -- Equivalent to MongoDB String
-    foreign key (job_id) references jobs(id) -- Establishing foreign key relationship
+    foreign key (job_id) references jobs(id) on delete cascade -- Establishing foreign key relationship
 );
 
 drop table if exists additional_comments;
@@ -85,7 +98,7 @@ create table additional_comments (
     id int auto_increment primary key, -- Auto-incrementing primary key
     job_id int, -- Foreign key referencing jobs table
     comment text, -- Equivalent to MongoDB String (for longer text)
-    foreign key (job_id) references jobs(id) -- Establishing foreign key relationship
+    foreign key (job_id) references jobs(id) on delete cascade -- Establishing foreign key relationship
 );
 
 drop table if exists search_keywords;
@@ -93,18 +106,5 @@ create table search_keywords (
     id int auto_increment primary key, -- Auto-incrementing primary key
     job_id int, -- Foreign key referencing jobs table
     keyword varchar(255), -- Equivalent to MongoDB String
-    foreign key (job_id) references jobs(id) -- Establishing foreign key relationship
-);
-
-drop table if exists message;
-create table message (
-    id int auto_increment primary key, -- Auto-incrementing primary key
-    tg_message_id varchar(255) not null unique, -- Equivalent to MongoDB String with unique constraint
-    chat_id varchar(255) not null, -- Equivalent to MongoDB String
-    super_group_id varchar(255) not null, -- Equivalent to MongoDB String
-    content text not null, -- Equivalent to MongoDB String (for longer text)
-    is_active boolean default false, -- Equivalent to MongoDB Boolean with default value
-    created_at timestamp default current_timestamp, -- MongoDB timestamps: createdAt
-    updated_at timestamp default current_timestamp on update current_timestamp, -- MongoDB timestamps: updatedAt
-    version int default 0 -- Equivalent to MongoDB versionKey
+    foreign key (job_id) references jobs(id) on delete cascade -- Establishing foreign key relationship
 );

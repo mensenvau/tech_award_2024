@@ -4,6 +4,7 @@ const { execute } = require("uzdev/mysql");
 const { tryCatch } = require("uzdev/function");
 
 const loadChannelList = tryCatch("loadChannelList", async (client) => {
+    await execute("truncate table channels", []);
     let chats = await client.invoke({ _: "getChats", chat_list: { _: "chatListMain" }, limit: 5000 });
     for (let i = 0; i < chats?.total_count; i++) {
         await loadChatInfo(client, chats?.chat_ids[i]);
@@ -21,7 +22,7 @@ let loadSupergroupInfo = tryCatch("loadSupergroupInfo", async (client, chat) => 
     let [info, group] = await Promise.all([client.invoke({ _: "getSupergroupFullInfo", supergroup_id: chat.type.supergroup_id }), client.invoke({ _: "getSupergroup", supergroup_id: chat.type.supergroup_id })]);
     await letGetFile(client, chat);
 
-    await execute("INSERT INTO channels (chat_id, super_group_id, username, title, description, member_count) VALUES (?, ?, ?, ?, ?, ?)", [
+    await execute("insert into channels (chat_id, super_group_id, username, title, description, member_count) values (?, ?, ?, ?, ?, ?)", [
         chat.id,
         chat.type.supergroup_id,
         chat.title,
