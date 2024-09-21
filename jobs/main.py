@@ -22,7 +22,7 @@ mongo_collection = mongo_db["jobs"]
 
 # Fetch data from MongoDB
 print("Collecting data from mongodb...")
-mongo_data = list(mongo_collection.find())
+mongo_data = list(mongo_collection.find().limit(1200))
 
 # Function to insert MongoDB data into MySQL
 def insert_into_mysql(data):
