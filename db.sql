@@ -2,8 +2,8 @@ drop database if exists tech_award_2024;
 create database tech_award_2024;
 use tech_award_2024;
 
-drop table if exists channel;
-create table channel (
+drop table if exists channels;
+create table channels (
     id int auto_increment primary key, -- Auto-incrementing primary key
     chat_id varchar(255) not null unique, -- Equivalent to MongoDB String, with UNIQUE constraint
     super_group_id varchar(255) not null unique, -- Equivalent to MongoDB String, with UNIQUE constraint
@@ -17,13 +17,13 @@ create table channel (
 );
 
 -- Ensure that both `chat_id` and `super_group_id` are unique together
-create unique index unique_chat_supergroup on channel (chat_id, super_group_id);
+create unique index unique_chat_supergroup on channels (chat_id, super_group_id);
 
 drop table if exists jobs;
 create table jobs (
     id int auto_increment primary key, -- Auto-incrementing primary key
     is_job_vacancy boolean, -- Equivalent to MongoDB Boolean
-    message_id bigint unique, -- Reference to a Message table
+    tg_message_id varchar(255) unique, -- Reference to a Message table
     job_name varchar(255), -- Equivalent to MongoDB String
     company_name varchar(255), -- Equivalent to MongoDB String
     job_type varchar(255), -- Equivalent to MongoDB String
@@ -94,4 +94,17 @@ create table search_keywords (
     job_id int, -- Foreign key referencing jobs table
     keyword varchar(255), -- Equivalent to MongoDB String
     foreign key (job_id) references jobs(id) -- Establishing foreign key relationship
+);
+
+drop table if exists message;
+create table message (
+    id int auto_increment primary key, -- Auto-incrementing primary key
+    tg_message_id varchar(255) not null unique, -- Equivalent to MongoDB String with unique constraint
+    chat_id varchar(255) not null, -- Equivalent to MongoDB String
+    super_group_id varchar(255) not null, -- Equivalent to MongoDB String
+    content text not null, -- Equivalent to MongoDB String (for longer text)
+    is_active boolean default false, -- Equivalent to MongoDB Boolean with default value
+    created_at timestamp default current_timestamp, -- MongoDB timestamps: createdAt
+    updated_at timestamp default current_timestamp on update current_timestamp, -- MongoDB timestamps: updatedAt
+    version int default 0 -- Equivalent to MongoDB versionKey
 );

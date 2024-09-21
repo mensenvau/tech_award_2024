@@ -1,0 +1,14 @@
+cache
+node_modules
+td
+build
+
+/cache
+/node_modules
+/td
+/build
+
+.DS_Store
+
+.env
+.env*
