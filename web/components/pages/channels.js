@@ -4,7 +4,7 @@ import { useFetch } from "@/library/request";
 import { useEffect, useState } from "react";
 import { Table, TableBody, TableCell, TableHead, TableHeader, TableRow } from "@/components/ui/table";
 import { Card, CardContent, CardHeader } from "@/components/ui/card";
-import { Charts } from "@/components/own/charts";
+import { Charts } from "@/components/own/stat";
 import { Loading } from "../own/loading";
 import Image from "next/image";
 

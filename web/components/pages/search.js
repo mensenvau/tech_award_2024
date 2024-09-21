@@ -4,7 +4,7 @@ import { useEffect, useState } from "react";
 import { useFetch } from "@/library/request";
 import { useSearchStore } from "@/library/stores";
 import { PaginationCompanent } from "@/components/own/pagination";
-import { Charts } from "@/components/own/charts";
+import { ChartStat } from "@/components/own/stat";
 import { JobCard } from "@/components/own/cards";
 import { Loading } from "@/components/own/loading";
 
@@ -47,7 +47,7 @@ export function PageSearch() {
                 {isLoading && <Loading count={6} />}
             </div>
             <div className="col-span-8 md:col-span-2 py-4">
-                <Charts />
+                <ChartStat />
             </div>
         </div>
     );

@@ -32,7 +32,7 @@ export default function RootLayout({ children }) {
             <body className={font.className}>
                 <Suspense>
                     <ThemeProvider attribute="class" defaultTheme="light" enableSystem disableTransitionOnChange>
-                        <MainLayout> {children} </MainLayout>
+                        <MainLayout>{children}</MainLayout>
                         <Toaster />
                         <GoogleAnalytics />
                     </ThemeProvider>
