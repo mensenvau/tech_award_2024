@@ -1,5 +1,11 @@
 const { execute } = require("uzdev/mysql");
 const { fnCatch } = require("uzdev/function");
+const { smsSender } = require("uzdev/sender");
+
+// smsSender("995441550", "Webdoc tizimidan ro'yxatdan o'tish uchun kod: 12345", (phone, status, message) => {
+//     if (status == 1) return console.log("SUCCESS", phone, message);
+//     console.log("ERROR", phone, message);
+// });
 
 exports.getListJobs = fnCatch(async (req, res, next) => {
     let title = req.query.title;
