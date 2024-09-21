@@ -1,15 +1,17 @@
 USE tech_award_2024;
 
 -- Roles table for users (e.g., job_seeker, director, employee)
+DROP TABLE IF EXISTS roles;
 CREATE TABLE roles (
     role_id TINYINT UNSIGNED AUTO_INCREMENT PRIMARY KEY,
     role_name VARCHAR(50) NOT NULL UNIQUE
 );
 
 -- Inserting default roles
-INSERT INTO roles (role_name) VALUES ('job_seeker'), ('director'), ('employee') ('recruiter');
+INSERT INTO roles (role_name) VALUES ('job_seeker'), ('director'), ('employee'), ('recruiter');
 
 -- Users table for storing basic user information
+DROP TABLE IF EXISTS users;
 CREATE TABLE users (
     user_id INT UNSIGNED AUTO_INCREMENT PRIMARY KEY,
     email VARCHAR(255) UNIQUE NULL,
@@ -20,6 +22,7 @@ CREATE TABLE users (
 );
 
 -- Table for storing extended user information
+DROP TABLE IF EXISTS user_info;
 CREATE TABLE user_info (
     user_info_id INT UNSIGNED AUTO_INCREMENT PRIMARY KEY,
     user_id INT UNSIGNED NOT NULL,
@@ -37,6 +40,7 @@ CREATE TABLE user_info (
 );
 
 -- Linking users to roles (job seeker, director, employee)
+DROP TABLE IF EXISTS user_roles;
 CREATE TABLE user_roles (
     user_role_id INT UNSIGNED AUTO_INCREMENT PRIMARY KEY,
     user_id INT UNSIGNED NOT NULL,
@@ -48,6 +52,7 @@ CREATE TABLE user_roles (
 );
 
 -- Organizations table to store organization information
+DROP TABLE IF EXISTS organizations;
 CREATE TABLE organizations (
     organization_id INT UNSIGNED AUTO_INCREMENT PRIMARY KEY,
     legal_name VARCHAR(255) NOT NULL UNIQUE,  -- Legal name of the organization
@@ -65,6 +70,7 @@ CREATE TABLE organizations (
 );
 
 -- Table to associate users with organizations (for roles like director or employee)
+DROP TABLE IF EXISTS organization_members;
 CREATE TABLE organization_members (
     org_member_id INT UNSIGNED AUTO_INCREMENT PRIMARY KEY,
     organization_id INT UNSIGNED NOT NULL,
@@ -76,6 +82,7 @@ CREATE TABLE organization_members (
 );
 
 -- for web page
+DROP TABLE IF EXISTS about_us;
 CREATE TABLE about_us (
     id INT AUTO_INCREMENT PRIMARY KEY,
     logo_file VARCHAR(255),  -- Path to the logo file
@@ -84,6 +91,7 @@ CREATE TABLE about_us (
     terms_of_service_link VARCHAR(255)
 );
 
+DROP TABLE IF EXISTS faq;
 CREATE TABLE faq (
     id INT AUTO_INCREMENT PRIMARY KEY,
     question TEXT NOT NULL,
