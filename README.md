@@ -1,4 +1,4 @@
-# Tech Award 2024 - Telegram Job Management Platform
+# Tech Award 2024 - Jobgram Platform
 
 This project is a **Telegram-based job management platform** that utilizes **TDLib** (Telegram Database Library) to integrate Telegram functionalities with a user-friendly web interface built using **Node.js** and **Next.js**. It allows users to manage job postings, applications, and notifications directly through Telegram, making it easier for both recruiters and applicants to connect.
 
@@ -15,12 +15,13 @@ This project is a **Telegram-based job management platform** that utilizes **TDL
 -   **Backend**:
     -   [TDLib](https://core.telegram.org/tdlib): For Telegram API integration.
     -   **Node.js**: For server-side logic.
-    -   **Express**: Lightweight server framework.
+    -   **Express.js**: Lightweight server framework.
     -   **SQL Database**: For managing job postings, users, and application data.
 -   **Frontend**:
 
     -   **Next.js**: For building the React-based web application.
     -   **CSS/Styled-Components**: For making the interface visually appealing.
+    -   **Shadcn/ui**: Beautifully designed components.
 
 -   **Workers**: Custom workers handle background tasks, like sending job notifications and syncing with Telegram.
 
@@ -49,32 +50,36 @@ Make sure you have the following installed:
 2. Install dependencies:
 
     ```bash
-    npm install
+    cd /server && npm install
+    cd /workers && npm install
+    cd /web && npm install
     ```
 
 3. Set up environment variables:
 
-    - Create a `.env` file based on `.env.example` and add your **Telegram API keys**, **database credentials**, and other necessary configurations.
+-   Create a `.env` file based on `.env.example` and add your **Telegram API keys**, **database credentials**, and other necessary configurations.
 
-    ```bash
-    cp .env.example .env
-    ```
+```bash
+cp .env.example .env
+```
 
 4. Initialize the database:
 
-    ```bash
-    mysql -u root -p < db.sql
-    ```
+```bash
+mysql -u root -p < db.sql
+```
 
 5. Start the development server:
 
     ```bash
-    npm run dev
+     cd /server && npm run start
+     cd /workers && node app.js
+     cd /web && npm run dev
     ```
 
 6. Access the web app:
 
-    Open your browser and go to `http://localhost:3000`.
+Open your browser and go to `http://localhost:3000`.
 
 ## 🛠️ Project Structure
 
@@ -105,7 +110,8 @@ To get started with the Telegram bot:
 ## ✨ Key Contributions
 
 -   **Mensenvau**: Backend logic, Telegram integration, and job management functionality.
--   **Contributors**: Frontend, design, and deployment assistance.
+-   **Nurmuhammad**: Backend logic and deployment assistance.
+-   **Bobir Samadov**: Frontend, design, and deployment assistance.
 
 ## 🏆 Why This Project?
 
