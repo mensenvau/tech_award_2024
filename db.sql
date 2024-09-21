@@ -115,5 +115,4 @@ create view vw_jobs as (
 );
 
 
-
 select * from vw_jobs where is_job_vacancy = true and (city like '%uz%' or country like '%uz%') limit 10, 20
