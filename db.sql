@@ -35,7 +35,7 @@ drop table if exists jobs;
 create table jobs (
     id int auto_increment primary key, -- Auto-incrementing primary key
     is_job_vacancy boolean, -- Equivalent to MongoDB Boolean
-    msg_id varchar(255) unique, -- Reference to a Message table
+    message_id varchar(255) unique, -- Reference to a Message table
     job_name varchar(255), -- Equivalent to MongoDB String
     company_name varchar(255), -- Equivalent to MongoDB String
     job_type varchar(255), -- Equivalent to MongoDB String
@@ -59,8 +59,8 @@ create table job_locations (
     foreign key (job_id) references jobs(id) on delete cascade -- Establishing foreign key relationship
 );
 
-drop table if exists contact_information;
-create table contact_information (
+drop table if exists contact_informations;
+create table contact_informations (
     id int auto_increment primary key, -- Auto-incrementing primary key
     job_id int, -- Foreign key referencing jobs table
     type varchar(255) not null, -- Equivalent to MongoDB String
@@ -107,3 +107,13 @@ create table search_keywords (
     keyword varchar(255), -- Equivalent to MongoDB String
     foreign key (job_id) references jobs(id) on delete cascade -- Establishing foreign key relationship
 );
+
+drop view if exists vw_jobs;
+create view vw_jobs as (
+    select jobs.*, jl.city, jl.country, jl.country_code from jobs
+    inner join job_locations jl on jobs.id = jl.job_id
+);
+
+
+
+select * from vw_jobs where is_job_vacancy = true and (city like '%uz%' or country like '%uz%') limit 10, 20
