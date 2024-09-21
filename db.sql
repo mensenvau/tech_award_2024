@@ -6,7 +6,7 @@ drop table if exists channels;
 create table channels (
     id int auto_increment primary key, -- Auto-incrementing primary key
     chat_id varchar(255) not null unique, -- Equivalent to MongoDB String, with UNIQUE constraint
-    super_group_id varchar(255) not null unique, -- Equivalent to MongoDB String, with UNIQUE constraint
+    group_id varchar(255) not null unique, -- Equivalent to MongoDB String, with UNIQUE constraint
     username varchar(255) not null, -- Equivalent to MongoDB String
     title varchar(255) not null, -- Equivalent to MongoDB String
     description text, -- Equivalent to MongoDB String, optional
@@ -19,24 +19,23 @@ create table channels (
 drop table if exists messages;
 create table messages (
     id int auto_increment primary key, -- Auto-incrementing primary key
-    tg_message_id varchar(255) not null unique, -- Equivalent to MongoDB String with unique constraint
+    msg_id varchar(255) not null unique, -- Equivalent to MongoDB String with unique constraint
     chat_id varchar(255) not null, -- Equivalent to MongoDB String
-    super_group_id varchar(255) not null, -- Equivalent to MongoDB String
+    group_id varchar(255) not null, -- Equivalent to MongoDB String
     content text not null, -- Equivalent to MongoDB String (for longer text)
     is_active boolean default false, -- Equivalent to MongoDB Boolean with default value
     created_at timestamp default current_timestamp, -- MongoDB timestamps: createdAt
-    updated_at timestamp default current_timestamp on update current_timestamp, -- MongoDB timestamps: updatedAt
-    version int default 0 -- Equivalent to MongoDB versionKey
+    updated_at timestamp default current_timestamp on update current_timestamp -- MongoDB timestamps: updatedAt
 );
 
--- Ensure that both `chat_id` and `super_group_id` are unique together
-create unique index unique_chat_supergroup on channels (chat_id, super_group_id);
+-- Ensure that both `chat_id` and `group_id` are unique together
+create unique index unique_chat_supergroup on channels (chat_id, group_id);
 
 drop table if exists jobs;
 create table jobs (
     id int auto_increment primary key, -- Auto-incrementing primary key
     is_job_vacancy boolean, -- Equivalent to MongoDB Boolean
-    tg_message_id varchar(255) unique, -- Reference to a Message table
+    msg_id varchar(255) unique, -- Reference to a Message table
     job_name varchar(255), -- Equivalent to MongoDB String
     company_name varchar(255), -- Equivalent to MongoDB String
     job_type varchar(255), -- Equivalent to MongoDB String
