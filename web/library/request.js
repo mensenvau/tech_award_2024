@@ -7,14 +7,13 @@ export function useFetch(cashe = "no-cache") {
     const BASE_URL = process.env.api;
 
     let [data, setData] = useState({});
-    let [isLoad, setIsLoad] = useState(false);
-    let [isError, setIsError] = useState(false);
-    let [valError, setValError] = useState({});
+    let [isLoading, setIsLoading] = useState(true);
+    let [isFailed, setIsFailed] = useState(false);
 
     /* get request */
     let request = async (method, url, input, success = false) => {
         /* start oading ... */
-        setIsLoad(true);
+        setIsLoading(true);
 
         try {
             let options = {
@@ -37,14 +36,13 @@ export function useFetch(cashe = "no-cache") {
             const response = await fetch(`${BASE_URL}/api/${url}`, options);
 
             /* stop loading ... */
-            setIsLoad(false);
+            setIsLoading(false);
 
             let data = await response.json();
             if (!response.ok) {
                 let message = data?.message;
                 if (response.status == 403) {
-                    message = data.err;
-                    setValError(data.err);
+                    message = data.details;
                 }
 
                 if (response.status == 405) {
@@ -54,7 +52,7 @@ export function useFetch(cashe = "no-cache") {
                 }
 
                 /* set error ... */
-                setIsError(true);
+                setIsFailed(true);
                 setToast("error", message);
                 return { status: 0, data: null };
             }
@@ -64,12 +62,12 @@ export function useFetch(cashe = "no-cache") {
 
             return { status: response?.status, data };
         } catch (err) {
-            setIsLoad(false);
-            setIsError(true);
-            setToast("error", `ServerError: ${err.message}`);
+            setIsLoading(false);
+            setIsFailed(true);
+            setToast("error", `${err.message}`);
             return { status: 0, data: null };
         }
     };
 
-    return { isLoad, isError, valError, data, request };
+    return { data, request, isLoading, isFailed };
 }

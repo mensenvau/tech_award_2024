@@ -1,5 +1,5 @@
-import { toast } from "sonner"
+import { toast } from "sonner";
 
 export default function setToast(type, message) {
-    toast[type](message, { action: { label: "Close", onClick: () => console.log("Close") }, })
+    toast[type](message, { action: { label: "Close", onClick: () => console.log("Close") } });
 }
