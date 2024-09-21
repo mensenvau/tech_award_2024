@@ -2,6 +2,8 @@
 
 This project is a **Telegram-based job management platform** that utilizes **TDLib** (Telegram Database Library) to integrate Telegram functionalities with a user-friendly web interface built using **Node.js** and **Next.js**. It allows users to manage job postings, applications, and notifications directly through Telegram, making it easier for both recruiters and applicants to connect.
 
+We have a comprehensive [Wiki](https://github.com/mensenvau/tech_award_2024/wiki) that includes detailed documentation about the platform’s architecture, features, integrations, and more.
+
 ## 🌟 Features
 
 -   **Telegram Integration**: Fully automated job management system using Telegram’s API powered by TDLib.
