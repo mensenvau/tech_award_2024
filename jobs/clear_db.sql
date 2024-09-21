@@ -11,6 +11,3 @@ select * from jobs where jobs.job_name = '' or jobs.job_descriptions = ''   ;
 select * from job_locations where country_code is null or city is null or country_code is null;
 select * from job_locations where country_code = '' or city = '' or country_code = '';
 
-
-
-

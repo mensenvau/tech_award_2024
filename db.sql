@@ -116,3 +116,27 @@ create view vw_jobs as (
 
 
 select * from vw_jobs where is_job_vacancy = true and (city like '%uz%' or country like '%uz%') limit 10, 20
+
+
+
+
+# YANGI HAYOT ...
+drop table if exists users;
+create table users (
+    id int unsigned auto_increment primary key,
+    phone_num varchar(255) unique null,
+    first_name varchar(255) null,
+    last_name varchar(255)  null,
+    birth_date date,
+    created_at timestamp default current_timestamp,
+    updated_at timestamp default current_timestamp on update current_timestamp
+);
+
+drop table if exists sms_code;
+create table sms_code (
+     id int unsigned auto_increment primary key,
+     user_id int,
+     code int,
+     status int default 0,
+     foreign key (id) references users(id) on delete cascade
+);
