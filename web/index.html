@@ -6,23 +6,60 @@
   <meta name="viewport" content="width=device-width, initial-scale=1.0">
   <link rel="stylesheet" href="css/index.css">
   <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.6.0/css/all.min.css" integrity="sha512-Kc323vGBEqzTmouAECnVceyQqyqdsSiqLQISBL29aUW4U/M7pSPA/gEUZQqv1cwx4OnYxTxve5UMg5GT6L4JJg==" crossorigin="anonymous" referrerpolicy="no-referrer" />
-  <title>Jogbram</title>
+  <title>Jobgram</title>
 </head>
 <body style="display: flex; justify-content: center;">
-<div class="container" style="max-width: 400px; width: 100vw; border: 1px solid #ccc; height: calc(100vh - 2px); border-radius: 5px;">
+<div class="container" style="max-width: 400px; width: 100vw; border: 1px solid #ccc; height: calc(100vh - 2px); border-radius: 5px; position: relative;">
     <header style="border-bottom: 1px solid #ccc;">
-        <h2 style="padding: 15px;"><center> Jogbram </center></h2>
+        <h2 style="padding: 15px;"><center> Jobgram </center></h2>
     </header>
     <main>
         <div class="search">
             <div class="input-append-prepend">
                 <span class="srch-icon"><i class="fa-solid fa-magnifying-glass"></i></span>
+                <input type="text" name="search" id="search" placeholder="Qidiruv...">
                 <span class="filter-icon"><i class="fa-solid fa-sliders"></i></span>
+            </div>
+            <div class="srch-button">
+                <button class="btn-search">Qidirish</button>
+            </div>
+        </div>
+        <div class="line-break"></div>
+        <div class="categories">
+            <h2>Categories</h2>
+            <div class="categories-list">
+                <div class="category-card">
+                    <div class="cat-desc">
+                        <span class="cat-img"> 📊 </span>
+                        <p class="cat-title">Sotuv va ayirboshlash (13)</p>
+                    </div>
+                    <span class="cat-icon"> <i class="fa-solid fa-chevron-right"></i> </span>
+                </div>
+                <div class="category-card">
+                    <div class="cat-desc">
+                        <span class="cat-img"> 💻 </span>
+                        <p class="cat-title">IT (52)</p>
+                    </div>
+                    <span class="cat-icon"> <i class="fa-solid fa-chevron-right"></i> </span>
+                </div>
+                <div class="category-card">
+                    <div class="cat-desc">
+                        <span class="cat-img">  🚚 </span>
+                        <p class="cat-title">Logistika (4)</p>
+                    </div>
+                    <span class="cat-icon"> <i class="fa-solid fa-chevron-right"></i> </span>
+                </div>
             </div>
         </div>
     </main>
     <footer>
-        
+        <div class="footer-content">
+            <div class="f-element"><span class="icon-cont"><i class="fa-solid fa-house-user"></i></span><span>Home</span></div>
+            <div class="f-element"><span class="icon-cont"><i class="fa-regular fa-heart"></i></span><span>Wishlist</span></div>
+            <div class="f-middle"><div class="plus-middle"><i class="fa-solid fa-plus"></i></div></div>
+            <div class="f-element"><span class="icon-cont"><i class="fa-regular fa-newspaper"></i></span><span>News</span></div>
+            <div class="f-element"><span class="icon-cont"><i class="fa-regular fa-circle-user"></i></span><span>Profile</span></div>
+        </div>
     </footer>
 </div>
     <script src="js/index.js"></script>
