@@ -33,6 +33,17 @@ Here is an overview of the system architecture represented through a UML diagram
 
 -   **Workers**: Custom workers handle background tasks, like sending job notifications and syncing with Telegram.
 
+[**Postman API Documentation**](https://documenter.getpostman.com/view/36794346/2sAXqtbMJB)
+
+This documentation provides comprehensive details on all available API routes, including authentication, job creation, user management, and more.
+
+## 🌐 Production App Links
+
+You can check out the live production version of our application below:
+
+-   **Web App**: [Production Link](https://jobgram.menda.page/)
+-   **API Base URL**: [Production API](https://api.menda.page/)
+
 ## 🚀 Getting Started
 
 Follow these instructions to set up the project on your local machine.
@@ -124,5 +135,3 @@ To get started with the Telegram bot:
 ## 🏆 Why This Project?
 
 We believe that job applications should be as accessible as possible, and leveraging a popular platform like Telegram simplifies the process for millions of users worldwide. Our project offers a **unique and efficient solution** for managing jobs and applications directly through Telegram while providing a robust web interface for recruiters and companies.
-
----
