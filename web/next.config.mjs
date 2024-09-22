@@ -2,7 +2,7 @@
 const nextConfig = {
     reactStrictMode: false,
     env: {
-        api: "http://127.0.0.1:3000", // "https://api.jobgram.org", //
+        api: "https://api.menda.page", // "http://127.0.0.1:3000", // "https://api.jobgram.org", //
         measurement_id: "G-BYMPRBHVSH",
     },
     images: {
@@ -21,7 +21,7 @@ const nextConfig = {
             },
             {
                 protocol: "https",
-                hostname: "jgapi.menda.page",
+                hostname: "api.menda.page",
             },
             {
                 protocol: "http",

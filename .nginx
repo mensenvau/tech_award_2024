@@ -1,0 +1,93 @@
+cd /etc/nginx/sites-available
+
+nano api.menda.page
+
+#edit and copy paste the file into it
+server {
+    listen 80;
+    server_name api.menda.page;
+
+    location / {
+        proxy_pass http://localhost:3000;
+        proxy_set_header        Host $host;
+        proxy_set_header        X-Real-IP $remote_addr;
+        proxy_set_header        X-Forwarded-For $proxy_add_x_forwarded_for;
+        proxy_set_header        X-Forwarded-Proto $scheme;
+        proxy_set_header        Upgrade $http_upgrade;
+        proxy_set_header        Connection "upgrade";
+        proxy_redirect          off;
+        proxy_http_version      1.1;
+    }
+}
+
+# file save
+# next 
+
+#if file already has!
+rm -rf /etc/nginx/sites-enabled/api.menda.page
+
+sudo ln -s /etc/nginx/sites-available/api.menda.page /etc/nginx/sites-enabled/
+
+# this is return -> Ok 
+sudo nginx -t
+
+# restart
+sudo systemctl restart nginx
+
+# ssl
+sudo certbot --nginx -d api.menda.page
+
+### done!
+
+
+
+
+
+
+
+
+
+
+
+
+
+cd /etc/nginx/sites-available
+
+nano jobgram.menda.page
+
+#edit and copy paste the file into it
+server {
+    listen 80;
+    server_name jobgram.menda.page;
+
+    location / {
+        proxy_pass http://localhost:3001;
+        proxy_set_header        Host $host;
+        proxy_set_header        X-Real-IP $remote_addr;
+        proxy_set_header        X-Forwarded-For $proxy_add_x_forwarded_for;
+        proxy_set_header        X-Forwarded-Proto $scheme;
+        proxy_set_header        Upgrade $http_upgrade;
+        proxy_set_header        Connection "upgrade";
+        proxy_redirect          off;
+        proxy_http_version      1.1;
+    }
+}
+
+# file save
+# next 
+
+#if file already has!
+rm -rf /etc/nginx/sites-enabled/jobgram.menda.page
+
+sudo ln -s /etc/nginx/sites-available/jobgram.menda.page /etc/nginx/sites-enabled/
+
+# this is return -> Ok 
+sudo nginx -t
+
+# restart
+sudo systemctl restart nginx
+
+# ssl
+sudo certbot --nginx -d jobgram.menda.page
+
+### done!
