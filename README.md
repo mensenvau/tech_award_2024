@@ -12,6 +12,12 @@ We have a comprehensive [Wiki](https://github.com/mensenvau/tech_award_2024/wiki
 -   **Job Posting & Tracking**: Easily create, post, and track job applications within the platform.
 -   **Secure Data Handling**: User data is managed securely with modern encryption practices.
 
+## 📊 UML Diagram
+
+Here is an overview of the system architecture represented through a UML diagram:
+
+![UML Diagram](./jobs/jobgram%20diogram.png)
+
 ## 💻 Tech Stack
 
 -   **Backend**:
