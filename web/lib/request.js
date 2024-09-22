@@ -41,15 +41,6 @@ export function useFetch(cashe = "no-cache") {
             let data = await response.json();
             if (!response.ok) {
                 let message = data?.message;
-                if (response.status == 403) {
-                    message = data.details;
-                }
-
-                if (response.status == 405) {
-                    for (let item in data?.err) {
-                        setToast("error", data?.err[item]);
-                    }
-                }
 
                 /* set error ... */
                 setIsFailed(true);

@@ -46,6 +46,8 @@ exports.getJobById = fnCatch(async (req, res, next) => {
         execute("select * from additional_comments where job_id = ?", [job_id]),
     ]);
 
+    if (!job) throw new Error("Bunday ish mavjud emas!")
+
     res.json({ job, job_locations, contact_informations, job_responsibilities, requirement_skills, occupations, additional_comments });
 });
 
