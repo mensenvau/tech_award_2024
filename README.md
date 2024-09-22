@@ -33,6 +33,10 @@ Here is an overview of the system architecture represented through a UML diagram
 
 -   **Workers**: Custom workers handle background tasks, like sending job notifications and syncing with Telegram.
 
+## 📚 API Documentation
+
+For detailed information on the API endpoints and how to interact with the Telegram Job Management Platform, please refer to our API documentation:
+
 [**Postman API Documentation**](https://documenter.getpostman.com/view/36794346/2sAXqtbMJB)
 
 This documentation provides comprehensive details on all available API routes, including authentication, job creation, user management, and more.
