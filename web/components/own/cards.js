@@ -1,6 +1,6 @@
 "use client";
 
-import { Calendar, Clock, DollarSign } from "lucide-react";
+import { Calendar, Clock, DollarSign, MapPin, Wallet2 } from "lucide-react";
 import { Card, CardContent, CardDescription, CardHeader, CardTitle } from "@/components/ui/card";
 import { Badge } from "@/components/ui/badge";
 import Image from "next/image";
@@ -49,11 +49,11 @@ export function JobCard({ job }) {
                 </CardHeader>
                 <CardContent>
                     <div className="sm:flex flex-wrap gap-2">
-                        <JobDetail icon={Clock} text={`${job.city} `} />
+                        <JobDetail icon={MapPin} text={`${job.city} `} />
                         {/* <JobDetail icon={CountryIcon} iconProps={{ code: job.country_code }} text={job.city} /> */}
                         <JobDetail icon={Clock} text={job.job_type} />
                         <JobDetail icon={Calendar} text={moment(job.job_date).fromNow()} />
-                        <JobDetail icon={DollarSign} text={job.job_salary} />
+                        <JobDetail icon={Wallet2} text={job.job_salary} />
                     </div>
                 </CardContent>
             </Card>

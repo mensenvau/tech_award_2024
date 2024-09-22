@@ -25,7 +25,7 @@ exports.getListJobs = fnCatch(async (req, res, next) => {
         where_arr = [...where_arr, `%${location}%`, `%${location}%`];
     }
 
-    let [jobs, cnt] = await Promise.all([execute(`select * from vw_jobs where ${where_str} limit ?, 20`, [...where_arr, page * 20]), execute(`select count(*) as count from vw_jobs where ${where_str}`, [...where_arr], 1)]);
+    let [jobs, cnt] = await Promise.all([execute(`select * from vw_jobs where ${where_str} order by job_date desc limit ?, 20`, [...where_arr, page * 20]), execute(`select count(*) as count from vw_jobs where ${where_str}`, [...where_arr], 1)]);
     return res.json({ jobs, page, total: Math.ceil(cnt.count / 20) || 0 });
 });
 
