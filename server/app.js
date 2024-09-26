@@ -1,7 +1,7 @@
 /* load environment variables */
 require("dotenv").config({ path: "../.env" });
 
-/* sitemap generate */
+/* sitemap generate every day one time */
 require("./controllers/generate.js")
 
 const express = require("express");
