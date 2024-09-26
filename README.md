@@ -4,6 +4,8 @@ This project is a **Telegram-based job management platform** that utilizes **TDL
 
 We have a comprehensive [Wiki](https://github.com/mensenvau/tech_award_2024/wiki) that includes detailed documentation about the platform’s architecture, features, integrations, and more.
 
+![Example Web](./jobs/jobgram_web.png)
+
 ## 🌟 Features
 
 -   **Telegram Integration**: Fully automated job management system using Telegram’s API powered by TDLib.
@@ -16,7 +18,7 @@ We have a comprehensive [Wiki](https://github.com/mensenvau/tech_award_2024/wiki
 
 Here is an overview of the system architecture represented through a UML diagram:
 
-![UML Diagram](./jobs/jobgram%20diogram.png)
+![UML Diagram](./jobs/jobgram_diogram.png)
 
 ## 💻 Tech Stack
 
@@ -40,6 +42,12 @@ For detailed information on the API endpoints and how to interact with the Teleg
 [**Postman API Documentation**](https://documenter.getpostman.com/view/36794346/2sAXqtbMJB)
 
 This documentation provides comprehensive details on all available API routes, including authentication, job creation, user management, and more.
+
+## ⚡ Google PageSpeed Insights
+
+PageSpeed Insights Docs Enter a valid URL Analyze Make your web pages fast on all devices Check out What's new Documentation Learn about Web Performance
+
+[PageSpeed Insights](https://pagespeed.web.dev/analysis/https-jobgram-org/ss4vj432il?utm_source=search_console&form_factor=desktop&hl=en)
 
 ## 🌐 Production App Links
 
