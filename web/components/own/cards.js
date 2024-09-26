@@ -78,8 +78,7 @@ export function JobFullCard({ data }) {
                         <JobDetail icon={Clock} text={job.job_type} />
                         <JobDetail icon={Calendar} text={moment(job.createdAt).fromNow()} />
                         <JobDetail icon={Wallet2} text={job.job_salary} />
-                        <JobDetail icon={MapPin} text={`${job_locations.country_code}, ${job_locations.city},${job_locations.full_address} `} />
-
+                        <JobDetail icon={MapPin} text={`${job_locations.country_code}, ${job_locations.city}, ${job_locations.full_address} `} />
                     </div>
                 </div>
 

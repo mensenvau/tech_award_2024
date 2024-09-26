@@ -29,7 +29,7 @@ export function ChartStat() {
                     {country.map((item, index) => (
                         <div key={index} >
                             <div className="text-sm">
-                                <Link href={`?location=${item.city}`}>{item.city} - {item.count}</Link>
+                                <Link href={`?location=${item.city}`}>{item.city || "N/A"} - {item.count}</Link>
                             </div>
                             <Separator className="my-2" />
                         </div>
