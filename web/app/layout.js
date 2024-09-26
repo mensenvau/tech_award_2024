@@ -10,7 +10,7 @@ import GoogleAnalytics from "@/components/own/analytics";
 const font = Nunito({ subsets: ["latin"] });
 
 export const metadata = {
-    title: "Jobgram - Sizning Ultimate Job Search Engine | Keyingi martaba harakatingizni kashf eting",
+    title: "Jobgram - Sizning Eng yaxshi ish qidirish mexanizmi | Tezda ish topish mumkin",
     description: "Jobgram - bu Internet bo'ylab ish o'rinlari ro'yxatlarini birlashtirgan yetakchi ish agregatoridir. Turli sohalarda va joylarda minglab imkoniyatlarni o'rganing. Karyera sayohatingizni bugun biz bilan boshlang!",
     keywords: ["Jobo", "Uzjobs", "Ish o'rinlar", "Ish kerak", "Ish"],
     generator: "Javascripts",
