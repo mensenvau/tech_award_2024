@@ -49,7 +49,7 @@ export function JobCard({ job }) {
                 </CardHeader>
                 <CardContent>
                     <div className="sm:flex flex-wrap gap-2">
-                        <JobDetail icon={MapPin} text={`${job.city} `} />
+                        <JobDetail icon={MapPin} text={`${job.country_code}, ${job.city}`} />
                         {/* <JobDetail icon={CountryIcon} iconProps={{ code: job.country_code }} text={job.city} /> */}
                         <JobDetail icon={Clock} text={job.job_type} />
                         <JobDetail icon={Calendar} text={moment(job.job_date).fromNow()} />
@@ -74,11 +74,12 @@ export function JobFullCard({ data }) {
                 <div className="w-full py-2">
                     <p className="font-semibold	text-lg">Ish tafsilotlari</p>
                     <div className="sm:flex flex-wrap gap-2">
-                        <JobDetail icon={MapPin} text={`${job.city} `} />
                         {/* <JobDetail icon={MapPin} iconProps={{ code: job_locations.country_code }} text={`${job_locations.city}, ${job_locations.full_address}`} /> */}
                         <JobDetail icon={Clock} text={job.job_type} />
                         <JobDetail icon={Calendar} text={moment(job.createdAt).fromNow()} />
                         <JobDetail icon={Wallet2} text={job.job_salary} />
+                        <JobDetail icon={MapPin} text={`${job_locations.country_code}, ${job_locations.city},${job_locations.full_address} `} />
+
                     </div>
                 </div>
 
