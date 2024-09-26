@@ -1,6 +1,9 @@
 /* load environment variables */
 require("dotenv").config({ path: "../.env" });
 
+/* sitemap generate */
+require("./controllers/generate.js")
+
 const express = require("express");
 const cors = require("cors");
 const app = express();
