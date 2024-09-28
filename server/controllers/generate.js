@@ -29,7 +29,7 @@ let generateSitemap = async () => {
                 `${baseUrl}/?title=${jobName}&amp;location=${city}`,
                 `${baseUrl}/?title=${companyName}&amp;location=${country}`,
                 `${baseUrl}/?title=${companyName}&amp;location=${city}`,
-                `${baseUrl}/job/${job._id}?job_name=${jobName}&amp;company_name=${companyName}`
+                `${baseUrl}/job/${job.id}?job_name=${jobName}&amp;company_name=${companyName}`
             ];
 
             keywords.forEach((keyword) => {
